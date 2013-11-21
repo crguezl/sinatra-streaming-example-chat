@@ -1,0 +1,16 @@
+- if defined? error_message
+  .alert.alert-error
+    %p #{error_message}
+      
+.login-container
+  %p
+    %h1 Welcome to the Chat app!
+  %hr
+  %form{:class => "form-horizontal", :method => "POST", :action => "/register-to-chat"}
+    .control-group
+      %label{:class => "control-label"} Username:
+      .controls
+        %input{:type => "text", :name => "username", :placeholder => "Write your username here..."}
+    .control-group
+      .controls
+        %button{:class => "btn btn-info"} Enter to the chat!

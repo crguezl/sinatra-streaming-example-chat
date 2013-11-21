@@ -1,0 +1,14 @@
+#chat-room
+  .span9
+    #chat{:class => "chat-container"}
+    
+    .submit-container
+      %form{:class => "form-inline", :id => "chat-submit"}
+        .input-append
+          %input{:type => "text", :id => "message", :placeholder => "Write your message here...", :class => "span6"}
+          %button{:class => "btn", :type => "submit", :id => "send-button"} Send
+      
+  .span2.pull-right
+    #users{:class => "users-container"}
+
+%script{:src => "custom.js"}
