@@ -47,7 +47,7 @@ __END__
   es.onmessage = function(e) { $('#chat').append(e.data + "\n") };
 
   // writing
-  $("form").live("submit", function(e) {
+  $("document").on("submit", "form", function(e) {
     $.post('/', {msg: "<%= user %>: " + $('#msg').val()});
     $('#msg').val(''); $('#msg').focus();
     e.preventDefault();
