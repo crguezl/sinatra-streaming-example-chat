@@ -26,7 +26,7 @@ __END__
   <head> 
     <title>Super Simple Chat with Sinatra</title> 
     <meta charset="utf-8" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
+    <script src="/js/jquery-1.8.3.min.js"></script> 
   </head> 
   <body><%= yield %></body>
 </html>
@@ -40,20 +40,20 @@ __END__
 
 @@ chat
 <pre id='chat'></pre>
-
+ 
 <script>
   // reading
   var es = new EventSource('/stream');
   es.onmessage = function(e) { $('#chat').append(e.data + "\n") };
-
+ 
   // writing
-  $("document").on("submit", "form", function(e) {
+  $("form").live("submit", function(e) {
     $.post('/', {msg: "<%= user %>: " + $('#msg').val()});
     $('#msg').val(''); $('#msg').focus();
     e.preventDefault();
   });
 </script>
-
+ 
 <form>
   <input id='msg' placeholder='type message here...' />
 </form>
