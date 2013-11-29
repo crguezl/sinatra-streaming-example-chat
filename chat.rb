@@ -26,7 +26,7 @@ __END__
   <head> 
     <title>Super Simple Chat with Sinatra</title> 
     <meta charset="utf-8" />
-    <script src="/js/jquery-1.8.3.min.js"></script> 
+    <script src="/js/jquery-1.8.3.js"></script> 
   </head> 
   <body><%= yield %></body>
 </html>
