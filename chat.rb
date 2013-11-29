@@ -1,8 +1,10 @@
 # coding: utf-8
 require 'sinatra'
-set server: 'thin', connections: []
+set server: 'thin'
+set connections: []
 
 get '/' do
+  puts('params[:user] = ' + (params[:user] || 'nil'))
   halt erb(:login) unless params[:user]
   erb :chat, locals: { user: params[:user].gsub(/\W/, '') }
 end
@@ -21,39 +23,4 @@ end
 
 __END__
 
-@@ layout
-<html>
-  <head> 
-    <title>Super Simple Chat with Sinatra</title> 
-    <meta charset="utf-8" />
-    <script src="/js/jquery-1.8.3.js"></script> 
-  </head> 
-  <body><%= yield %></body>
-</html>
 
-@@ login
-<form action='/'>
-  <label for='user'>User Name:</label>
-  <input name='user' value='' />
-  <input type='submit' value="GO!" />
-</form>
-
-@@ chat
-<pre id='chat'></pre>
- 
-<script>
-  // reading
-  var es = new EventSource('/stream');
-  es.onmessage = function(e) { $('#chat').append(e.data + "\n") };
- 
-  // writing
-  $("form").live("submit", function(e) {
-    $.post('/', {msg: "<%= user %>: " + $('#msg').val()});
-    $('#msg').val(''); $('#msg').focus();
-    e.preventDefault();
-  });
-</script>
- 
-<form>
-  <input id='msg' placeholder='type message here...' />
-</form>
