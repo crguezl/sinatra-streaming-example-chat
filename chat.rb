@@ -4,8 +4,10 @@ set server: 'thin'
 set connections: []
 
 get '/' do
-  puts('params[:user] = ' + (params[:user] || 'nil'))
-  halt erb(:login) unless params[:user]
+  erb(:login) 
+end
+
+post '/chat' do
   erb :chat, locals: { user: params[:user].gsub(/\W/, '') }
 end
 
